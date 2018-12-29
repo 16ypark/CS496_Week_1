@@ -3,6 +3,7 @@ package com.pinkal.gallery.adapter
 import android.content.Context
 import android.content.Intent
 import android.net.Uri
+import android.support.v4.app.Fragment
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.LayoutInflater
@@ -10,8 +11,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import com.bumptech.glide.Glide
+import com.pinkal.gallery.fragment.FirstFragment
+import com.pinkal.gallery.fragment.ThirdFragment
 import com.pinkal.gallery.R
 import com.pinkal.gallery.activity.FullScreenImageActivity
+import com.pinkal.gallery.fragment.CameraRollFragment
 import com.pinkal.gallery.model.Images
 import com.pinkal.gallery.utils.CURRENT_IMAGE
 import com.pinkal.gallery.utils.IMAGE

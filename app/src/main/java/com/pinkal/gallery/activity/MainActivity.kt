@@ -15,10 +15,9 @@ import android.view.MenuItem
 import android.view.Window
 import android.view.WindowManager
 import com.pinkal.gallery.R
-import com.pinkal.gallery.fragment.AlbumsFragment
 import com.pinkal.gallery.fragment.CameraRollFragment
-import com.pinkal.gallery.fragment.ImageFragment
-import com.pinkal.gallery.fragment.VideoFragment
+import com.pinkal.gallery.fragment.FirstFragment
+import com.pinkal.gallery.fragment.ThirdFragment
 import com.pinkal.gallery.utils.Permissions
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.alert
@@ -86,17 +85,16 @@ class MainActivity : AppCompatActivity() {
 
         setupViewPager(viewpager)
         tabs.setupWithViewPager(viewpager)
-        viewpager.currentItem = 1
+        viewpager.currentItem = 0
     }
 
     private fun setupViewPager(viewPager: ViewPager) {
         val adapter = ViewPagerAdapter(supportFragmentManager)
+        adapter.addFragment(FirstFragment(), "First Tab")
         adapter.addFragment(CameraRollFragment(), "Camera Roll")
-        adapter.addFragment(AlbumsFragment(), "Albums")
-        adapter.addFragment(ImageFragment(), "Image")
-        adapter.addFragment(VideoFragment(), "Video")
+        adapter.addFragment(ThirdFragment(), "Third Tab")
         viewPager.adapter = adapter
-        viewPager.offscreenPageLimit = 4
+        viewPager.offscreenPageLimit = 2
     }
 
     internal inner class ViewPagerAdapter(manager: FragmentManager) : FragmentStatePagerAdapter(manager) {
