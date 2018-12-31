@@ -90,9 +90,9 @@ class MainActivity : AppCompatActivity() {
 
     private fun setupViewPager(viewPager: ViewPager) {
         val adapter = ViewPagerAdapter(supportFragmentManager)
-        adapter.addFragment(FirstFragment(), "First Tab")
+        adapter.addFragment(FirstFragment(), "Contacts")
         adapter.addFragment(CameraRollFragment(), "Camera Roll")
-        adapter.addFragment(ThirdFragment(), "Third Tab")
+        adapter.addFragment(ThirdFragment(), "Memo")
         viewPager.adapter = adapter
         viewPager.offscreenPageLimit = 2
     }
