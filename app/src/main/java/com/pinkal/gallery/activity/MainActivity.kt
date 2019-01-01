@@ -63,26 +63,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun initialize() {
 
-        fab.setOnClickListener {
-
-            val i = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
-            try {
-                val pm = packageManager
-
-                val mInfo = pm.resolveActivity(i, 0)
-
-                val intent = Intent()
-                intent.component = ComponentName(mInfo.activityInfo.packageName, mInfo.activityInfo.name)
-                intent.action = Intent.ACTION_MAIN
-                intent.addCategory(Intent.CATEGORY_LAUNCHER)
-
-                startActivity(intent)
-            } catch (e: Exception) {
-                toast("Unable to launch camera: " + e)
-            }
-
-        }
-
         setupViewPager(viewpager)
         tabs.setupWithViewPager(viewpager)
         viewpager.currentItem = 0

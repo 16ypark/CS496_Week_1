@@ -1,5 +1,7 @@
 package com.pinkal.gallery.fragment
 
+import android.content.ComponentName
+import android.content.Intent
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
@@ -14,8 +16,12 @@ import com.pinkal.gallery.R
 import com.pinkal.gallery.adapter.AllImagesAdapter
 import com.pinkal.gallery.model.Images
 import com.pinkal.gallery.utils.IMAGE
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_camera_roll.*
 import kotlinx.android.synthetic.main.fragment_camera_roll.view.*
+import org.jetbrains.anko.toast
 import java.util.*
+
 
 
 /**
@@ -44,6 +50,25 @@ class CameraRollFragment : Fragment() {
     }
 
     private fun initialize(view: View) {
+        fab?.setOnClickListener {
+
+            val i = Intent(MediaStore.ACTION_IMAGE_CAPTURE)
+            try {
+                val pm = activity.packageManager
+
+                val mInfo = pm.resolveActivity(i, 0)
+
+                val intent = Intent()
+                intent.component = ComponentName(mInfo.activityInfo.packageName, mInfo.activityInfo.name)
+                intent.action = Intent.ACTION_MAIN
+                intent.addCategory(Intent.CATEGORY_LAUNCHER)
+
+                startActivity(intent)
+            } catch (e: Exception) {
+                activity.toast("Unable to launch camera: " + e)
+            }
+
+        }
         recyclerViewCameraRoll = view.recyclerViewCameraRoll
 
     }

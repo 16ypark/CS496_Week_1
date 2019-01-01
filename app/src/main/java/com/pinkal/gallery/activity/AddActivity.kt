@@ -37,6 +37,5 @@ class AddActivity : AppCompatActivity() {
             setResult(Activity.RESULT_OK, add)
             finish()
         }
-
     }
 }
