@@ -5,6 +5,7 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.provider.MediaStore
+import android.support.v4.app.ActivityCompat
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentStatePagerAdapter
@@ -22,6 +23,7 @@ import com.pinkal.gallery.utils.Permissions
 import kotlinx.android.synthetic.main.activity_main.*
 import org.jetbrains.anko.alert
 import org.jetbrains.anko.toast
+import android.Manifest
 
 
 class MainActivity : AppCompatActivity() {
@@ -29,6 +31,8 @@ class MainActivity : AppCompatActivity() {
     private val TAG = MainActivity::class.java.simpleName
 
     private val mActivity = this@MainActivity
+
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,7 +46,7 @@ class MainActivity : AppCompatActivity() {
         toolbar.setNavigationIcon(R.mipmap.ic_launcher_icon)
         setSupportActionBar(toolbar)
 
-        if (Permissions.instance.isReadStoragePermissionGranted(this)) {
+       if (Permissions.instance.isReadStoragePermissionGranted(this) && Permissions.instance.isReadContactsPermissionGranted(this)) {
             initialize()
         }
 
@@ -51,13 +55,16 @@ class MainActivity : AppCompatActivity() {
     override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<out String>, grantResults: IntArray) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if (grantResults.isNotEmpty() && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-            initialize()
+            if (Permissions.instance.isReadStoragePermissionGranted(this) && Permissions.instance.isReadContactsPermissionGranted(this)) {
+                initialize()
+            }
         } else {
-            alert("Please allow permission to Gallery to load images and video.", "Allow Permission!") {
+            alert("Please allow permission", "Allow Permission!") {
                 positiveButton("ALLOW", {
                     Permissions.instance.isReadStoragePermissionGranted(this@MainActivity)
                 })
             }.show().setCancelable(false)
+
         }
     }
 
