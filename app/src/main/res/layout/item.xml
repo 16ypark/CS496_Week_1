@@ -20,14 +20,14 @@
         android:layout_marginLeft="20dp"
         android:layout_marginStart="20dp"
         android:paddingLeft="20dp"
-        android:text="Data" />
+        android:text="Data"
+        android:textSize="30dp"/>
 
     <TextView
         android:id="@+id/mContextTextViewTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingTop="75dp"
-        android:text="2018.04.16 12:00"
         android:textColor="@android:color/darker_gray"
         android:textSize="9dp"
         android:gravity="right"/>

@@ -11,7 +11,7 @@
         android:id="@+id/title_text"
         android:layout_width="match_parent"
         android:layout_height="50dp"
-        android:hint="제목"/>
+        android:hint="입력하세요"/>
 
     <Button
         android:id="@+id/addFinish"

@@ -9,9 +9,8 @@ import android.widget.Button
 import android.widget.EditText
 
 import java.text.SimpleDateFormat
-import java.util.Calendar
-import java.util.Date
 import com.pinkal.gallery.R
+import java.util.*
 
 
 class AddActivity : AppCompatActivity() {
@@ -28,7 +27,7 @@ class AddActivity : AppCompatActivity() {
 
         btn.setOnClickListener {
             val c = Calendar.getInstance().time
-            val df = SimpleDateFormat("yyyy-MM-dd HH:mm:ss")
+            val df = SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.KOREA)
             formattedDate = df.format(c)
             title = editText!!.text.toString()
             val add = Intent()

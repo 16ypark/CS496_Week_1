@@ -12,9 +12,6 @@ import com.pinkal.gallery.R
 import io.realm.Realm
 import io.realm.RealmResults
 
-/**
- * Created by ysh on 2018-04-12.
- */
 
 class RcvAdapter(private val activity: Activity, private val dataList: MutableList<Memo>) : RecyclerView.Adapter<RcvAdapter.ViewHolder>() {
     private var realm: Realm? = null
